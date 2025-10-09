@@ -1,130 +1,252 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Farhat Tasnim Progga</title>
-  <meta name="description" content="Portfolio of Farhat Tasnim Progga — HCI, Digital Health, Responsible AI" />
-  <style>
-    :root{
-      --bg: #ffffff; --fg:#0f172a; --muted:#475569; --soft:#f1f5f9;
-      --card:#ffffff; --border:#e2e8f0; --brand:#0ea5e9; --brand-2:#0369a1; --link:#0ea5e9; --link-hover:#0284c7;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; color:var(--fg); background:var(--bg)}
-    a{color:var(--link); text-decoration:none}
-    a:hover{color:var(--link-hover)}
-    .container{max-width:1100px; margin:0 auto; padding:20px}
-    header.site{display:flex; flex-wrap:wrap; align-items:center; gap:16px; padding-block:18px}
-    header .brand{display:flex; align-items:center; gap:12px}
-    .brand img{width:56px; height:56px; object-fit:cover; box-shadow:0 6px 16px rgba(0,0,0,.08)}
-    .brand h1{font-size:clamp(22px, 2.4vw, 28px); margin:0}
-    .brand p{margin:2px 0 0; color:var(--muted); font-size:14px}
+import { useState } from "react";
 
-    nav.tabs{margin-left:auto; display:flex; flex-wrap:wrap; gap:8px}
-    nav.tabs a{padding:10px 14px; border-radius:999px; background:#fff; border:1px solid var(--border); color:var(--brand-2); font-weight:600; font-size:14px}
-    nav.tabs a[aria-current="page"]{background:var(--brand); color:white; border-color:transparent}
+// ---- Simple single-file React portfolio with tabs ----
+// Tabs: Home, Research, Publications, CV, Contact
+// Styling: Tailwind CSS (no extra imports needed)
+// Tip: Replace image/CV file paths with your actual filenames in the public folder.
 
-    main{display:block; margin-top:12px}
-    section.tab{display:none}
-    section.tab.active{display:block}
+const TABS = ["Home", "Research", "Publications", "CV", "Contact"] as const;
 
-    .grid{display:grid; grid-template-columns:1.1fr 360px; gap:20px}
-    .card{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:18px; box-shadow:0 4px 12px rgba(0,0,0,.04)}
-    .card h2{margin:0 0 6px; font-size:20px}
-    .muted{color:var(--muted)}
-    ul.clean{padding-left:18px}
-    ul.clean li{margin:6px 0}
+type Tab = typeof TABS[number];
 
-    footer.site{margin-top:32px; padding-top:12px; border-top:1px solid var(--border); color:var(--muted); font-size:14px; text-align:center}
-    @media (max-width: 880px){.grid{grid-template-columns:1fr}}
-  </style>
-</head>
-<body>
-  <div class="container">
-    <header class="site">
-      <div class="brand">
-        <img src="Progga.png" alt="Farhat Tasnim Progga" />
-        <div>
-          <h1>Farhat Tasnim Progga</h1>
-          <p>Ph.D. Candidate · Human-Computer Interaction · Digital Health</p>
-        </div>
+function TabButton({ label, active, onClick }: { label: Tab; active: boolean; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`px-4 py-2 rounded-xl text-sm font-medium transition hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-300 whitespace-nowrap ${
+        active ? "bg-sky-600 text-white" : "bg-white text-sky-700 border border-sky-200"
+      }`}
+    >
+      {label}
+    </button>
+  );
+}
+
+function SectionCard({ title, children, right }: { title: string; children: any; right?: any }) {
+  return (
+    <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-sm">
+      <div className="flex items-start gap-4 justify-between mb-3">
+        <h3 className="text-xl font-semibold tracking-tight text-slate-800">{title}</h3>
+        {right}
       </div>
-      <nav class="tabs">
-        <a href="#home" data-tab="home" aria-current="page">Home</a>
-        <a href="#research" data-tab="research">Research</a>
-        <a href="#publications" data-tab="publications">Publications</a>
-        <a href="#news" data-tab="news">News</a>
-        <a href="#cv" data-tab="cv">CV</a>
-        <a href="#contact" data-tab="contact">Contact</a>
-      </nav>
-    </header>
+      <div className="prose max-w-none prose-slate text-slate-700">
+        {children}
+      </div>
+    </div>
+  );
+}
 
-    <main id="content" tabindex="-1">
-      <section id="home" class="tab active">
-        <article class="card">
-          <h2>About</h2>
-          <p>I am a Ph.D. candidate in <strong>Computer Science</strong> at <a href="https://www.marquette.edu/">Marquette University</a>, working under the supervision of <a href="https://sabiratrubya.com/">Dr. Sabirat Rubya</a>. My research focuses on <strong>human-centered AI</strong>, <strong>social computing</strong>, and <strong>digital health for women’s wellbeing</strong>.</p>
-        </article>
-      </section>
+function HomeTab() {
+  return (
+    <div className="grid lg:grid-cols-[1.1fr,360px] gap-6">
+      <SectionCard title="About">
+        <p>
+          I am a Ph.D. candidate in <strong>Computer Science</strong> at
+          {" "}
+          <a href="https://www.marquette.edu/" target="_blank" rel="noreferrer" className="underline decoration-sky-300 decoration-2 underline-offset-2 hover:text-sky-700">Marquette University</a>,
+          working under the supervision of
+          {" "}
+          <a href="https://sabiratrubya.com/" target="_blank" rel="noreferrer" className="underline decoration-sky-300 decoration-2 underline-offset-2 hover:text-sky-700">Dr. Sabirat Rubya</a>.
+          Dr. Rubya is an Assistant Professor of Computer Science at Marquette and co‑leads the
+          {" "}
+          <a href="https://www.marquette.edu/computer-science/directory/sabirat-rubya.php" target="_blank" rel="noreferrer" className="underline decoration-sky-300 decoration-2 underline-offset-2 hover:text-sky-700">Social & Ethical Computing Lab</a>.
+        </p>
+        <p>
+          My research focuses on <strong>human‑centered AI</strong>, <strong>social computing</strong>, and
+          {" "}
+          <strong>digital health for women’s wellbeing</strong>—with an emphasis on how large language models (LLMs) and
+          personalized storytelling can support perinatal mental health for marginalized communities.
+        </p>
+        <p>
+          Previously, I was a <strong>Data Engineering Intern</strong> at
+          {" "}
+          <a href="https://www.northwesternmutual.com/" target="_blank" rel="noreferrer" className="underline decoration-sky-300 decoration-2 underline-offset-2 hover:text-sky-700">Northwestern Mutual</a>,
+          working on automated evaluation frameworks for LLMs, and a <strong>Research Intern</strong> at the
+          {" "}
+          <a href="https://www.parkview.com/research" target="_blank" rel="noreferrer" className="underline decoration-sky-300 decoration-2 underline-offset-2 hover:text-sky-700">Parkview Mirro Center for Research and Innovation</a>.
+          I also serve as a Teaching Assistant for Data Science and Machine Learning courses at Marquette.
+        </p>
+      </SectionCard>
 
-      <section id="news" class="tab">
-        <article class="card">
-          <h2>News & Updates</h2>
-          <ul class="clean">
-            <li><strong>2025:</strong> Awarded the <em>Arthur J. Schmitt Fellowship</em> at Marquette University.</li>
-            <li><strong>2025:</strong> Recipient of the <em>Dean’s Research Enhancement Fellowship</em>.</li>
-            <li><strong>2025:</strong> Presented our paper on understanding women's perspectives and challenges on using perinatal mental health technology at <em>GROUP 2025</em>.</li>
-            <li><strong>2024:</strong> Participated in the <em>Doctoral Consortium</em> at CSCW 2024.</li>
-            <li><strong>2024:</strong> Completed my summer internship at <em>Parkview Health</em>.</li>
-            <li><strong>2024:</strong> Received the <em>Best Intern Recognition</em> from Northwestern Mutual for the Summer 2024 cohort.</li>
-          </ul>
-        </article>
-      </section>
+      <aside className="space-y-6">
+        <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm">
+          <img src="Progga.png" alt="Farhat Tasnim Progga" className="w-full aspect-square object-cover rounded-xl" />
+          <div className="mt-4 space-y-1">
+            <p className="text-lg font-semibold text-slate-800">Farhat Tasnim Progga</p>
+            <p className="text-slate-600">Ph.D. Candidate, Computer Science</p>
+            <p className="text-slate-600">Marquette University</p>
+          </div>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <a className="px-3 py-1.5 rounded-lg bg-sky-50 text-sky-700 border border-sky-200" href="2Farhat_Tasnim_PROGGA.pdf" target="_blank" rel="noreferrer">CV (PDF)</a>
+            <a className="px-3 py-1.5 rounded-lg bg-slate-50 text-slate-700 border" href="mailto:farhattasnim.progga@marquette.edu">Email</a>
+            <a className="px-3 py-1.5 rounded-lg bg-slate-50 text-slate-700 border" href="https://www.linkedin.com/in/farhat-tasnim-progga112/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a className="px-3 py-1.5 rounded-lg bg-slate-50 text-slate-700 border" href="https://scholar.google.com/citations?user=PbrzMhAAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
+            <a className="px-3 py-1.5 rounded-lg bg-slate-50 text-slate-700 border" href="https://www.researchgate.net/profile/Farhat_Progga" target="_blank" rel="noreferrer">ResearchGate</a>
+          </div>
+        </div>
 
-      <section id="research" class="tab">
-        <article class="card">
-          <h2>Research</h2>
-          <p>My research explores AI-driven storytelling, explainable systems, and digital health interventions that support marginalized women's perinatal wellbeing.</p>
-        </article>
-      </section>
+        <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm">
+          <p className="text-sm text-slate-600">Last updated October 2025</p>
+        </div>
+      </aside>
 
-      <section id="publications" class="tab">
-        <article class="card">
-          <h2>Publications</h2>
-          <ul class="clean">
-            <li><strong>Progga, F. T.</strong> & Rubya, S. (2024). <em>Large Language Models and Personalized Storytelling for Postpartum Wellbeing.</em> CSCW 2024.</li>
-            <li><strong>Progga, F. T.</strong> (2024). <em>Enhancing Healthcare Access Through AI-Driven Conversational Agents for Marginalized Women.</em> Marquette HCI Lab.</li>
-          </ul>
-        </article>
-      </section>
+      <SectionCard title="Highlights">
+        <ul className="list-disc pl-5">
+          <li>Poster at <strong>CSCW 2024</strong>: LLMs & Personalized Storytelling for Postpartum Wellbeing.</li>
+          <li>LLM evaluation automation during internship at Northwestern Mutual (custom metrics, dashboards).</li>
+          <li>HCI & Digital Health focus: AI‑driven conversational agents for marginalized women.</li>
+        </ul>
+      </SectionCard>
+    </div>
+  );
+}
 
-      <section id="cv" class="tab">
-        <article class="card">
-          <h2>Curriculum Vitae</h2>
-          <iframe src="2Farhat_Tasnim_PROGGA.pdf" style="width:100%; height:70vh; border:none"></iframe>
-        </article>
-      </section>
+function ResearchTab() {
+  return (
+    <div className="space-y-6">
+      <SectionCard title="Research Interests">
+        <p>
+          Human‑Computer Interaction (HCI), Responsible/Explainable AI, Social Computing, and Digital Health.
+          I design and study AI‑driven interventions that are culturally sensitive, transparent, and clinically relevant for
+          perinatal mental health support.
+        </p>
+      </SectionCard>
 
-      <section id="contact" class="tab">
-        <article class="card">
-          <h2>Contact</h2>
-          <p>Email: <a href="mailto:farhattasnim.progga@marquette.edu">farhattasnim.progga@marquette.edu</a></p>
-          <p>LinkedIn: <a href="https://www.linkedin.com/in/farhat-tasnim-progga112/">linkedin.com/in/farhat-tasnim-progga112</a></p>
-        </article>
-      </section>
-    </main>
+      <SectionCard title="Selected Projects">
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="border border-slate-200 rounded-xl p-4 bg-white">
+            <h4 className="font-semibold">LLMs & Personalized Storytelling for Postpartum Wellbeing</h4>
+            <p className="text-sm text-slate-600">Poster — CSCW 2024</p>
+            <p className="mt-2">Explores capabilities and limitations of LLMs to produce culturally sensitive, supportive narratives for mothers.</p>
+          </div>
+          <div className="border border-slate-200 rounded-xl p-4 bg-white">
+            <h4 className="font-semibold">AI‑Driven Conversational Agents for Marginalized Women</h4>
+            <p className="text-sm text-slate-600">Research proposal — HCI / Digital Health</p>
+            <p className="mt-2">Explainable, trustworthy chatbot framework with evaluation via lab studies and iterative design.</p>
+          </div>
+          <div className="border border-slate-200 rounded-xl p-4 bg-white">
+            <h4 className="font-semibold">Automated Evaluation Frameworks for LLMs</h4>
+            <p className="text-sm text-slate-600">Industry project — Northwestern Mutual</p>
+            <p className="mt-2">Pipelines + custom metrics for quality, bias, and reliability; production‑oriented dashboards.</p>
+          </div>
+          <div className="border border-slate-200 rounded-xl p-4 bg-white">
+            <h4 className="font-semibold">Earlier: CV for Social Impact</h4>
+            <p className="text-sm text-slate-600">Child labour detection; domestic violence detection</p>
+            <p className="mt-2">Deep learning projects exploring video‑based detection for social good contexts.</p>
+          </div>
+        </div>
+      </SectionCard>
+    </div>
+  );
+}
 
-    <footer class="site">Last updated October 2025 · Template inspired by Jon Barron</footer>
-  </div>
+function PublicationsTab() {
+  return (
+    <div className="space-y-6">
+      <SectionCard title="Publications & Presentations">
+        <ul className="space-y-3">
+          <li>
+            <p>
+              <strong>Progga, F. T.</strong> & Rubya, S. (2024).
+              <em> Large Language Models and Personalized Storytelling for Postpartum Wellbeing.</em>
+              Poster presented at <span className="italic">CSCW 2024</span>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Progga, F. T.</strong> (2024).
+              <em> Enhancing Healthcare Access Through AI‑Driven Conversational Agents for Marginalized Women.</em>
+              Research proposal, Marquette HCI Lab.
+            </p>
+          </li>
+        </ul>
+      </SectionCard>
 
-  <script>
-    const tabs=document.querySelectorAll('nav.tabs a');
-    const sections=document.querySelectorAll('section.tab');
-    function setActive(id){sections.forEach(s=>s.classList.toggle('active','#'+s.id===id));tabs.forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')===id?'page':'false'));}
-    window.addEventListener('hashchange',()=>setActive(location.hash||'#home'));
-    if(!location.hash)location.hash='#home';setActive(location.hash);
-  </script>
-</body>
-</html>
+      <SectionCard title="Honors & Awards">
+        <ul className="list-disc pl-5">
+          <li>Internship Excellence Award — Northwestern Mutual (2024)</li>
+          <li>Conference Travel Grant — CSCW 2024</li>
+          <li>Finalist — NASA Human Exploration Rover Challenge (2019)</li>
+          <li>Finalist — IEEE YESIST12 (2019)</li>
+          <li>Finalist — YICGG (2019)</li>
+        </ul>
+      </SectionCard>
+    </div>
+  );
+}
+
+function CVTab() {
+  return (
+    <div className="space-y-6">
+      <SectionCard title="Curriculum Vitae" right={<a className="text-sky-700 underline" href="2Farhat_Tasnim_PROGGA.pdf" target="_blank" rel="noreferrer">Open PDF</a>}>
+        <p>View the embedded CV below or <a className="underline" href="2Farhat_Tasnim_PROGGA.pdf" target="_blank" rel="noreferrer">download the PDF</a>.</p>
+        <div className="mt-4 border rounded-xl overflow-hidden">
+          <iframe title="CV" src="2Farhat_Tasnim_PROGGA.pdf" className="w-full h-[70vh]"></iframe>
+        </div>
+      </SectionCard>
+    </div>
+  );
+}
+
+function ContactTab() {
+  return (
+    <div className="space-y-6">
+      <SectionCard title="Get in touch">
+        <p>Email: <a className="underline" href="mailto:farhattasnim.progga@marquette.edu">farhattasnim.progga@marquette.edu</a></p>
+        <p>LinkedIn: <a className="underline" href="https://www.linkedin.com/in/farhat-tasnim-progga112/" target="_blank" rel="noreferrer">linkedin.com/in/farhat-tasnim-progga112</a></p>
+        <p>Google Scholar: <a className="underline" href="https://scholar.google.com/citations?user=PbrzMhAAAAAJ&hl=en" target="_blank" rel="noreferrer">Scholar profile</a></p>
+        <p>ResearchGate: <a className="underline" href="https://www.researchgate.net/profile/Farhat_Progga" target="_blank" rel="noreferrer">ResearchGate</a></p>
+      </SectionCard>
+
+      <SectionCard title="Affiliation">
+        <p>
+          Department of Computer Science, {" "}
+          <a href="https://www.marquette.edu/" target="_blank" rel="noreferrer" className="underline">Marquette University</a>
+        </p>
+        <p>
+          Advisor: <a href="https://sabiratrubya.com/" target="_blank" rel="noreferrer" className="underline">Dr. Sabirat Rubya</a>
+        </p>
+      </SectionCard>
+    </div>
+  );
+}
+
+export default function PortfolioSite() {
+  const [tab, setTab] = useState<Tab>("Home");
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white text-slate-800">
+      <div className="max-w-6xl mx-auto px-4 pb-16">
+        {/* Header */}
+        <header className="py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <img src="Progga.png" alt="FTP" className="w-14 h-14 rounded-xl object-cover shadow" />
+            <div>
+              <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Farhat Tasnim Progga</h1>
+              <p className="text-slate-600 text-sm md:text-base">Ph.D. Candidate · Human‑Computer Interaction · Digital Health</p>
+            </div>
+          </div>
+          <nav className="flex flex-wrap gap-2">
+            {TABS.map((t) => (
+              <TabButton key={t} label={t} active={tab === t} onClick={() => setTab(t)} />
+            ))}
+          </nav>
+        </header>
+
+        {/* Body */}
+        <div className="grid gap-6">
+          {tab === "Home" && <HomeTab />}
+          {tab === "Research" && <ResearchTab />}
+          {tab === "Publications" && <PublicationsTab />}
+          {tab === "CV" && <CVTab />}
+          {tab === "Contact" && <ContactTab />}
+        </div>
+
+        {/* Footer */}
+        <footer className="mt-16 text-center text-slate-500 text-sm">
+          Template built with React + Tailwind. Last updated October 2025. · Original single‑page HTML credits: <a className="underline" href="https://jonbarron.info/" target="_blank" rel="noreferrer">Jon Barron</a>
+        </footer>
+      </div>
+    </div>
+  );
+}
