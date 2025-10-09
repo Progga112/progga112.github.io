@@ -1,450 +1,242 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-  <meta name= "description" content=“width=800”>
-  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
-  <style type="text/css">
-    /* Color scheme stolen from Sergey Karayev */
-    a {
-    color: #1772d0;
-    text-decoration:none;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Farhat Tasnim Progga</title>
+  <meta name="description" content="Portfolio of Farhat Tasnim Progga — HCI, Digital Health, Responsible AI" />
+  <style>
+    :root{
+      --bg: #ffffff; --fg:#0f172a; --muted:#475569; --soft:#f1f5f9;
+      --card:#ffffff; --border:#e2e8f0; --brand:#0ea5e9; --brand-2:#0369a1; --link:#0ea5e9; --link-hover:#0284c7;
     }
-    a:focus, a:hover {
-    color: #f09228;
-    text-decoration:none;
-    }
-    body,td,th,tr,p,a {
-    font-family: 'Calibri', Verdana, Helvetica, sans-serif;
-    font-size: 16px
-    }
-    strong {
-    font-family: 'Calibri', Verdana, Helvetica, sans-serif;
-    font-size: 16px;
-    }
-    heading {
-    font-family: 'Calibri', Verdana, Helvetica, sans-serif;
-    font-size: 24px;
-    }
-    papertitle {
-    font-family: 'Calibri', Verdana, Helvetica, sans-serif;
-    font-size: 16px;
-    font-weight: 700
-    }
-    name {
-    font-family: 'Calibri', Verdana, Helvetica, sans-serif;
-    font-size: 32px;
-    }
-    .one
-    {
-    width: 160px;
-    height: 160px;
-    position: relative;
-    }
-    .two
-    {
-    width: 160px;
-    height: 160px;
-    position: absolute;
-    transition: opacity .2s ease-in-out;
-    -moz-transition: opacity .2s ease-in-out;
-    -webkit-transition: opacity .2s ease-in-out;
-    }
-    .fade {
-     transition: opacity .2s ease-in-out;
-     -moz-transition: opacity .2s ease-in-out;
-     -webkit-transition: opacity .2s ease-in-out;
-    }
-    span.highlight {
-        background-color: #ffffd0;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; color:var(--fg); background:var(--bg)}
+    a{color:var(--link); text-decoration:none}
+    a:hover{color:var(--link-hover)}
+    .container{max-width:1100px; margin:0 auto; padding:20px}
+    header.site{display:flex; flex-wrap:wrap; align-items:center; gap:16px; padding-block:18px}
+    header .brand{display:flex; align-items:center; gap:12px}
+    .brand img{width:56px; height:56px; border-radius:14px; object-fit:cover; box-shadow:0 6px 16px rgba(0,0,0,.08)}
+    .brand h1{font-size:clamp(22px, 2.4vw, 28px); margin:0}
+    .brand p{margin:2px 0 0; color:var(--muted); font-size:14px}
+
+    /* Tabs */
+    nav.tabs{margin-left:auto; display:flex; flex-wrap:wrap; gap:8px}
+    nav.tabs a{padding:10px 14px; border-radius:999px; background:#fff; border:1px solid var(--border); color:var(--brand-2); font-weight:600; font-size:14px}
+    nav.tabs a[aria-current="page"]{background:var(--brand); color:white; border-color:transparent}
+    nav.tabs a:focus{outline:3px solid #bae6fd; outline-offset:2px}
+
+    main{display:block; margin-top:12px}
+    section.tab{display:none}
+    section.tab.active{display:block}
+
+    .grid{display:grid; grid-template-columns:1.1fr 360px; gap:20px}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:18px; box-shadow:0 4px 12px rgba(0,0,0,.04)}
+    .card h2{margin:0 0 6px; font-size:20px}
+    .muted{color:var(--muted)}
+    .btn{display:inline-block; padding:8px 12px; border-radius:10px; border:1px solid var(--border); background:#fff; color:#0f172a}
+    .btn.primary{background:var(--brand); color:#fff; border-color:transparent}
+
+    ul.clean{padding-left:18px}
+    ul.clean li{margin:6px 0}
+
+    footer.site{margin-top:32px; padding-top:12px; border-top:1px solid var(--border); color:var(--muted); font-size:14px; text-align:center}
+
+    @media (max-width: 880px){
+      .grid{grid-template-columns:1fr}
+      nav.tabs{width:100%; order:3; justify-content:flex-start}
+      header.site{gap:12px}
     }
   </style>
-  
-  <title>Farhat Tasnim Progga</title>
-  </head>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <header class="site" role="banner">
+      <div class="brand">
+        <img src="Progga.png" alt="Farhat Tasnim Progga" />
+        <div>
+          <h1>Farhat Tasnim Progga</h1>
+          <p>Ph.D. Candidate · Human‑Computer Interaction · Digital Health</p>
+        </div>
+      </div>
+      <nav class="tabs" aria-label="Primary" role="navigation">
+        <a href="#home" data-tab="home" aria-current="page">Home</a>
+        <a href="#research" data-tab="research">Research</a>
+        <a href="#publications" data-tab="publications">Publications</a>
+        <a href="#cv" data-tab="cv">CV</a>
+        <a href="#contact" data-tab="contact">Contact</a>
+      </nav>
+    </header>
 
-  <body>
-  <table width="800" border="0" align="center" cellspacing="0" cellpadding="0">
-    <tr>
-    <td>
-      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-      <tr>
-        <div text-align:justify>
-        <td width="67%" valign="middle">
-        <p align="center">
-          <name>Farhat Tasnim Progga</name>
-     <p>
-I am a Ph.D. candidate in <strong>Computer Science</strong> at 
-<a href="https://www.marquette.edu/" target="_blank">Marquette University</a>, 
-working under the supervision of 
-<a href="https://sabiratrubya.com/" target="_blank">Dr. Sabirat Rubya</a>. 
-Dr. Rubya is an Assistant Professor of Computer Science at Marquette and co-leads the 
-<a href="https://www.marquette.edu/computer-science/directory/sabirat-rubya.php" target="_blank">
-Social & Ethical Computing Lab</a>, where her research spans 
-human-computer interaction, mobile health technologies, social computing, and responsible AI.
-My research focuses on human-centered AI, social computing, and digital health for women’s wellbeing. 
-I explore how large language models (LLMs) and storytelling can support perinatal mental health, 
-especially for marginalized communities.
-</p>
+    <main id="content" tabindex="-1">
+      <!-- HOME -->
+      <section id="home" class="tab active" aria-labelledby="tab-home">
+        <div class="grid">
+          <article class="card">
+            <h2>About</h2>
+            <p>
+              I am a Ph.D. candidate in <strong>Computer Science</strong> at
+              <a href="https://www.marquette.edu/" target="_blank" rel="noopener">Marquette University</a>, working under the supervision of
+              <a href="https://sabiratrubya.com/" target="_blank" rel="noopener">Dr. Sabirat Rubya</a>.
+              Dr. Rubya is an Assistant Professor of Computer Science at Marquette and co‑leads the
+              <a href="https://www.marquette.edu/computer-science/directory/sabirat-rubya.php" target="_blank" rel="noopener">Social & Ethical Computing Lab</a>.
+            </p>
+            <p>
+              My research focuses on <strong>human‑centered AI</strong>, <strong>social computing</strong>, and <strong>digital health for women’s wellbeing</strong>.
+              I explore how <em>large language models (LLMs)</em> and storytelling can support perinatal mental health, especially for marginalized communities.
+            </p>
+            <p>
+              Previously, I was a <strong>Data Engineering Intern</strong> at
+              <a href="https://www.northwesternmutual.com/" target="_blank" rel="noopener">Northwestern Mutual</a>, working on automated evaluation frameworks for LLMs,
+              and a <strong>Research Intern</strong> at the
+              <a href="https://www.parkview.com/research" target="_blank" rel="noopener">Parkview Mirro Center for Research and Innovation</a>.
+              I also serve as a Teaching Assistant for Data Science and Machine Learning courses at Marquette.
+            </p>
+          </article>
+          <aside class="card">
+            <img src="Progga.png" alt="Portrait" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:12px" />
+            <div style="margin-top:10px" class="muted">
+              <div>Marquette University</div>
+              <div>Advisor: <a href="https://sabiratrubya.com/" target="_blank" rel="noopener">Dr. Sabirat Rubya</a></div>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:12px">
+              <a class="btn" href="mailto:farhattasnim.progga@marquette.edu">Email</a>
+              <a class="btn" href="2Farhat_Tasnim_PROGGA.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+              <a class="btn" href="https://www.linkedin.com/in/farhat-tasnim-progga112/" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="btn" href="https://scholar.google.com/citations?user=PbrzMhAAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a>
+              <a class="btn" href="https://www.researchgate.net/profile/Farhat_Progga" target="_blank" rel="noopener">ResearchGate</a>
+            </div>
+          </aside>
+        </div>
 
-<p>
-Previously, I was a <strong>Data Engineering Intern</strong> at 
-<a href="https://www.northwesternmutual.com/" target="_blank">Northwestern Mutual</a>, 
-working on automated evaluation frameworks for LLMs, and a 
-<strong>Research Intern</strong> at the 
-<a href="https://www.parkview.com/research" target="_blank">Parkview Mirro Center for Research and Innovation</a>, 
-focusing on AI in healthcare. 
-I have also served as a <strong>Teaching Assistant</strong> for courses in data science and machine learning 
-at Marquette University.
-</p>
+        <article class="card" style="margin-top:20px">
+          <h2>Highlights</h2>
+          <ul class="clean">
+            <li><strong>CSCW 2024</strong> poster: LLMs & Personalized Storytelling for Postpartum Wellbeing.</li>
+            <li>LLM evaluation automation during internship at Northwestern Mutual (custom metrics, dashboards).</li>
+            <li>HCI & Digital Health focus: AI‑driven conversational agents for marginalized women.</li>
+          </ul>
+        </article>
+      </section>
 
-        <p align=center>
-          <a href="2Farhat_Tasnim_PROGGA.pdf">Curriculum Vitae</a> &nbsp/&nbsp
-          <a href="mailto:farhattasnim.progga@marquette.edu">Email</a> &nbsp/&nbsp
-          <a href="https://www.linkedin.com/in/farhat-tasnim-progga112/"> LinkedIn </a> &nbsp/&nbsp
-          <a href="https://scholar.google.com/citations?user=PbrzMhAAAAAJ&hl=en">Google Scholar</a> &nbsp/&nbsp
-          <a href="https://www.researchgate.net/profile/Farhat_Progga"> Research Gate </a>
- 
-         
-        </p>
-        </td>
-        
-        <td width="33%">
-        <img src="Progga.png">
-        </td>
-      
-      </tr>
-      </table>
-    
-      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-      <tr>
-        <td width="100%" valign="middle">
-          <heading>Research Works</heading>
+      <!-- RESEARCH -->
+      <section id="research" class="tab" aria-labelledby="tab-research">
+        <article class="card">
+          <h2>Research Interests</h2>
           <p>
-           My research interest lies in Human-Computer Interaction, Human-Centered Machine Learning, Computer Vision and Deep Learning Applications. During my undergraduate study, I involved myself in some projects on video classification as Deep Learning Applications. Regardless, I am flexible to work on any project in such fields, with my foremost motivation to learn new dimensions and contribute to humanitarian technology. Below portrayed are my research works and projects I have done and have been involved so far. 
-
+            Human‑Computer Interaction (HCI), Responsible/Explainable AI, Social Computing, and Digital Health.
+            I design and study AI‑driven interventions that are culturally sensitive, transparent, and clinically relevant for perinatal mental health support.
           </p>
-        </td>
-      </tr>
-      </table>
+        </article>
 
-
-      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-
-
-    <tr onmouseout="jump_stop()" onmouseover="jump_start()">
-      <td width="25%">
-        <div class="one">
-          <div class="two" id = 'jump_image'><img src='child.png'></div>
-          <img src='child.png'>
+        <div class="grid" style="margin-top:20px">
+          <article class="card">
+            <h2>LLMs & Personalized Storytelling for Postpartum Wellbeing</h2>
+            <p class="muted">Poster — CSCW 2024</p>
+            <p>Explores capabilities and limitations of LLMs to produce culturally sensitive, supportive narratives for mothers in the postpartum period.</p>
+          </article>
+          <article class="card">
+            <h2>AI‑Driven Conversational Agents for Marginalized Women</h2>
+            <p class="muted">Research proposal — HCI / Digital Health</p>
+            <p>Explainable, trustworthy chatbot framework with evaluation via lab studies and iterative design.</p>
+          </article>
+          <article class="card">
+            <h2>Automated Evaluation Frameworks for LLMs</h2>
+            <p class="muted">Industry project — Northwestern Mutual</p>
+            <p>Pipelines and custom metrics for quality, bias, and reliability; production‑oriented dashboards.</p>
+          </article>
+          <article class="card">
+            <h2>Earlier: CV for Social Impact</h2>
+            <p class="muted">Child labour detection; domestic violence detection</p>
+            <p>Deep learning projects exploring video‑based detection for social good contexts.</p>
+          </article>
         </div>
-        <script type="text/javascript">
-          function jump_start() {
-            document.getElementById('jump_image').style.opacity = "1";
-          }
-          function jump_stop() {
-            document.getElementById('jump_image').style.opacity = "0";
-          }
-          jump_stop()
-        </script>
-      </td>
+      </section>
 
+      <!-- PUBLICATIONS -->
+      <section id="publications" class="tab" aria-labelledby="tab-publications">
+        <article class="card">
+          <h2>Publications & Presentations</h2>
+          <ul class="clean">
+            <li><strong>Progga, F. T.</strong> & Rubya, S. (2024). <em>Large Language Models and Personalized Storytelling for Postpartum Wellbeing.</em> Poster presented at CSCW 2024.</li>
+            <li><strong>Progga, F. T.</strong> (2024). <em>Enhancing Healthcare Access Through AI‑Driven Conversational Agents for Marginalized Women.</em> Research proposal, Marquette HCI Lab.</li>
+          </ul>
+        </article>
 
-      <td valign="top" width="75%">
-        <p>
-        <papertitle>Child Labour Detection Approach</papertitle></p>
-          
-          <p></p>
-          <p>A noble detection approach was designed, implemented and tested, which has the ability to detect child labour happening in the construction areas of the South Asian countries.</p>
-          
-          <p></p>
-          </a></p>
-        </td>
-      </tr>
-       <tr onmouseout="jump_stop()" onmouseover="jump_start()">
-      <td width="25%">
-        <div class="one">
-          <div class="two" id = 'jump_image'><img src='vio.png'></div>
-          <img src='vio.png'>
+        <article class="card" style="margin-top:20px">
+          <h2>Honors & Awards</h2>
+          <ul class="clean">
+            <li>Internship Excellence Award — Northwestern Mutual (2024)</li>
+            <li>Conference Travel Grant — CSCW 2024</li>
+            <li>Finalist — NASA Human Exploration Rover Challenge (2019)</li>
+            <li>Finalist — IEEE YESIST12 (2019)</li>
+            <li>Finalist — YICGG (2019)</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- CV -->
+      <section id="cv" class="tab" aria-labelledby="tab-cv">
+        <article class="card">
+          <h2>Curriculum Vitae</h2>
+          <p>View the embedded CV below or <a href="2Farhat_Tasnim_PROGGA.pdf" target="_blank" rel="noopener">download the PDF</a>.</p>
+          <div style="margin-top:12px; border:1px solid var(--border); border-radius:12px; overflow:hidden">
+            <iframe title="CV" src="2Farhat_Tasnim_PROGGA.pdf" style="width:100%; height:72vh; border:0"></iframe>
+          </div>
+        </article>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="tab" aria-labelledby="tab-contact">
+        <div class="grid">
+          <article class="card">
+            <h2>Get in touch</h2>
+            <p>Email: <a href="mailto:farhattasnim.progga@marquette.edu">farhattasnim.progga@marquette.edu</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/farhat-tasnim-progga112/" target="_blank" rel="noopener">linkedin.com/in/farhat-tasnim-progga112</a></p>
+            <p>Google Scholar: <a href="https://scholar.google.com/citations?user=PbrzMhAAAAAJ&hl=en" target="_blank" rel="noopener">Scholar profile</a></p>
+            <p>ResearchGate: <a href="https://www.researchgate.net/profile/Farhat_Progga" target="_blank" rel="noopener">ResearchGate</a></p>
+          </article>
+          <aside class="card">
+            <h2>Affiliation</h2>
+            <p>Department of Computer Science,<br />
+              <a href="https://www.marquette.edu/" target="_blank" rel="noopener">Marquette University</a></p>
+            <p>Advisor: <a href="https://sabiratrubya.com/" target="_blank" rel="noopener">Dr. Sabirat Rubya</a></p>
+          </aside>
         </div>
-        <script type="text/javascript">
-          function jump_start() {
-            document.getElementById('jump_image').style.opacity = "1";
-          }
-          function jump_stop() {
-            document.getElementById('jump_image').style.opacity = "0";
-          }
-          jump_stop()
-        </script>
-      </td>
+      </section>
+    </main>
 
+    <footer class="site">Template: single‑file HTML with native tabs · Last updated October 2025 · Original single‑page HTML credits: <a href="https://jonbarron.info/" target="_blank" rel="noopener">Jon Barron</a></footer>
+  </div>
 
-      <td valign="top" width="75%">
-        <p>
-        <papertitle>Application of Deep Learning Techniques: Domestic Violence Detection</papertitle></p>
-          
-          <p></p>
-          <p>A method of detecting the occurance of domestic violence by dint of deep learning techniques and giving the victims immediate relief from that situation.</p>
-          
-          <p></p>
-          </a></p>
-        </td>
-      </tr>
-    
-    
-      <tr onmouseout="aperture_stop()" onmouseover="aperture_start()" >
-      <td width="25%">
-        <div class="one">
-        <div class="two" id = 'aperture_image'><img src='nasa.gif'></div>
-        <img src='nasa.gif'>
-        </div>
-        <script type="text/javascript">
-        function aperture_start() {
-        document.getElementById('aperture_image').style.opacity = "1";
-        }
-        function aperture_stop() {
-        document.getElementById('aperture_image').style.opacity = "0";
-        }
-        aperture_stop()
-        </script>
-      </td>
-      <td valign="top" width="75%">
-            <papertitle>Human Exploration Rover</papertitle>
-    <br><br>
-    <em><a href="https://www.nasa.gov/stem/roverchallenge/home/index.html">NASA Human Exploration Rover Challenge 2019</a>, Huntsville, USA</em>
-     
-        <p>A 4 wheeled human exploration rover was built that can carry 2 drivers of that rover and perform some specific tasks.</p>
-      </td>
-    </tr>
-   
+  <script>
+    // Tiny hash‑router for tabs with accessibility hooks
+    (function(){
+      const tabs = document.querySelectorAll('nav.tabs a');
+      const sections = document.querySelectorAll('section.tab');
 
-  
- <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+      function setActive(id){
+        sections.forEach(sec=>sec.classList.toggle('active', '#'+sec.id===id));
+        tabs.forEach(a=>{
+          const active = a.getAttribute('href')===id;
+          a.setAttribute('aria-current', active? 'page' : 'false');
+        });
+        // Move focus to main for screen readers when tab changes
+        document.getElementById('content').focus({preventScroll:true});
+      }
 
-    
-    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-      <tr>
-        <td width="100%" valign="middle">
-          <heading>Experience</heading>
-         </td>
-      </tr>
-      </table>
+      function onHash(){
+        const id = location.hash && document.getElementById(location.hash.slice(1)) ? location.hash : '#home';
+        setActive(id);
+      }
 
-
-      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-        
-
-
-        <tr onmouseout="jump_stop()" onmouseover="jump_start()" >
-          
-
-        <td valign="top" width="100%">
-          <papertitle>Associate Software Engineer, QA</papertitle></a></p>
-          
-          <em>Therap (BD) Ltd. (August 2020 - Present)
-          <br>
-            <p>Responsibilities:
-Reviewing quality specifications and technical design documents to provide timely and meaningful feedback;
-Creating detailed, comprehensive and well-structured test plans and test cases;
-Estimating, prioritizing, planning and coordinating quality testing activities.</p>
-            </a></p>
-          </td>
-        </tr>
-
-
-        <tr onmouseout="jump_stop()" onmouseover="jump_start()" >
-        <td valign="top" width="100%">
-          <papertitle>Teaching Assistant</papertitle></a></p>
-          
-          <em>North South University (January 2019 - June 2020)
-          <br>
-            <p>Responsibilities: Conducting tutorial sessions for students, grading home-works and assignments, maintaining office hours for student consolation, assisting faculty members in their course related works.</p>
-            <p>Courses: Pre-Calculus; Calculus and Analytic Geometry-I; Introduction to Linear Alzebra.</p>
-            </a></p>
-          </td>
-        </tr>
-
-
-        <tr onmouseout="jump_stop()" onmouseover="jump_start()" >
-        <td valign="top" width="100%">
-          <papertitle>Service Assurance Intern</papertitle></a></p>
-          
-          <em>Banglalink Digital Communications Ltd. (July 2020 – August 2020)
-          <br>
-            <p>Responsibilities:
-Complied with all lawful and reasonable directions and instructions given by officers or employees of Company
-during the course of the Internship;
-Learned about the service assurance operation of Banglalink Network.</p>
-            </a></p>
-          </td>
-        </tr>
-
-
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-      <tr>
-        <td width="100%" valign="middle">
-          <heading>Leadership Experience</heading>
-          
-        </td>
-      </tr>
-      </table>
-
-      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-        <tr onmouseout="jump_stop()" onmouseover="jump_start()" >
-        <td valign="top" width="100%">
-          <papertitle>Treasurer</papertitle></a></p>
-          
-          <em> <a href="https://ieeensu.org/ieee-nsu-wie-ag/">IEEE North South University Women in Engineering Affinity Group Student Branch</a> (January 2018 - January 2020)
-          <br>
-            <p>Served as the treasurer of the IEEE North South University Women in Engineering Affinity Group Student Branch.</p>
-            </a></p>
-          </td>
-        </tr>
-
-      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-        <tr onmouseout="jump_stop()" onmouseover="jump_start()" >
-        <td valign="top" width="100%">
-          <papertitle>Secretary</papertitle></a></p>
-          
-          <em> <a href="https://ieeensu.org/ieee-nsu-ias-sbc/">IEEE North South University Industry Application Student Branch Chapter </a> (June 2018 - June 2019)
-          <br>
-            <p>Served as the secretary of the IEEE North South University Industry Application Society Student Branch Chapter.</p>
-            </a></p>
-          </td>
-        </tr>
-
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-      <tr>
-        <td width="100%" valign="middle">
-          <heading>Co-curricular Activities</heading>
-          
-        </td>
-      </tr>
-      </table>
-
-      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-        <tr onmouseout="jump_stop()" onmouseover="jump_start()" >
-        <td valign="top" width="100%">
-          <papertitle>Organizer</papertitle></a></p>
-          
-          <em>Served as an organizer in IEEE Student Professional Awareness Conference (SPAC) 2018.
-          </td>
-        </tr>
-
-       <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-        <tr onmouseout="jump_stop()" onmouseover="jump_start()" >
-        <td valign="top" width="100%">
-          <papertitle>Activities</papertitle></a></p>
-          
-          <em>Debating, Public Speaking, Camping, Volunteerism (IEEE Bangladesh Section, Bangladesh Girls’ Guide
-Association). 
-          </td>
-        </tr>
-
-
-
-
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-      <tr>
-        <td width="100%" valign="middle">
-          <heading>Honors & Awards</heading>
-          
-        </td>
-      </tr>
-      </table>
-
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-        <tr onmouseout="jump_stop()" onmouseover="jump_start()" >
-        <td valign="top" width="100%">
-          <papertitle>Finalist</papertitle></a></p>
-          
-          <em><a href="https://www.nasa.gov/stem/roverchallenge/home/index.html">NASA Human Exploration Rover Challenge 2019</a>, Huntsville, USA </em>
-          <br>
-            <p>NASA Human Exploration Rover Challenge is an engineering design challenge to engage students worldwide in the next phase of human space exploration.</p>
-            </a></p>
-          </td>
-        </tr>
-
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-        <tr onmouseout="jump_stop()" onmouseover="jump_start()" >
-        <td valign="top" width="100%">
-          <papertitle>Finalist</papertitle></a></p>
-          
-          <em> <a href="https://www.gwp.org/en/GWP-South-East-Asia/WE-ACT/keep-updated/News-and-Activities/2019/yicgg-2019/#:~:text=The%202019%20competition%20which%20held,appeal%20for%20a%20general%20consensus.">Young Innovation Competition on Global Governance (YICGG) 2019</a>, Indonessia</em>
-          <br>
-            <p>The Youth Innovation Competition on Global Governance (YICGG) is an annual competition that act as a platform to raise global issues to the youth from all parts of the world.</p>
-            </a></p>
-          </td>
-        </tr>
-         <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-        <tr onmouseout="jump_stop()" onmouseover="jump_start()" >
-        <td valign="top" width="100%">
-          <papertitle>Finalist</papertitle></a></p>
-          
-          <em> <a href="https://ieeeyesist12.org/gallery/">IEEE YESIST12-Age of Innovation 2019</a>, Bangkok, Thailand</em>
-          <br>
-            <p>IEEE YESIST12 is an international talent show for students and young professionals to showcase their innovative ideas to solve humanitarian issues affecting the community around them.</p>
-            </a></p>
-          </td>
-        </tr>
-
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-        <tr onmouseout="jump_stop()" onmouseover="jump_start()" >
-        <td valign="top" width="100%">
-          <papertitle> Selected Participant</papertitle></a></p>
-          
-          <em> <a href="https://sites.google.com/view/acm-summer-school-bangladesh/home">ACM SIGCHI Summer School 2019, North South University</a>, Dhaka, Bangladesh</em> 
-          <br>
-            <p>A summer school is a program of lectures, classes, tutorials, hands on technology sessions, exercise or group work arranged by a group of SIGCHI members for the benefit of SIGCHI student members.</p>
-            </a></p>
-          </td>
-        </tr>
-
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-        <tr onmouseout="jump_stop()" onmouseover="jump_start()" >
-        <td valign="top" width="100%">
-          <papertitle> Invited Participant</papertitle></a></p>
-          
-          <em> <a href="https://www.worldbank.org/en/news/feature/2019/03/06/women-in-power-sector-professional-network-in-south-asia">WePower Conference 2019 by World Bank</a>, Kathmandu, Nepal</em> 
-          <br>
-            <p>An international manifesto for celebrating the Women Power specifically the power of women in technical sectors of South Asia.</p>
-            </a></p>
-          </td>
-        </tr>
-        
-
-
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-        <tr onmouseout="jump_stop()" onmouseover="jump_start()" >
-        <td valign="top" width="100%">
-          <papertitle>1st Runner-up</papertitle></a></p>
-          
-          <em><a herf="http://ece.northsouth.edu/event/the-arduino-generation-2019/">"Arduino Day Celebration:The Arduino Generation 2019"</a> by IEEE NSU RAS Student Branch Chapter </em>
-          <br>
-            <p>A local project showcase and poster competition for celebrating Arduino Day.</p>
-            </a></p>
-          </td>
-        </tr>
- 
-
-    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-      </font>
-        </p>
-        <p align="right">
-          <font size="2">
-          <br>
-          Template credits: <a href="https://jonbarron.info/">Jon Barron</a><br>
-          Thanks for dropping by.<br>
-          Last updated July 2020.
-      </font>
-        </p>
-        
-    </td>
-    </tr>
-  </table>
-  </body>
+      window.addEventListener('hashchange', onHash);
+      if(!location.hash) location.hash = '#home';
+      onHash();
+    })();
+  </script>
+</body>
 </html>
-
-
-
-
-
